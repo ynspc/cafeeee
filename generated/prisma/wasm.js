@@ -134,6 +134,49 @@ exports.Prisma.FoodItemScalarFieldEnum = {
   categoryId: 'categoryId'
 };
 
+exports.Prisma.OrderScalarFieldEnum = {
+  id: 'id',
+  timestamp: 'timestamp',
+  userInput: 'userInput',
+  predictedAction: 'predictedAction',
+  actualAction: 'actualAction',
+  totalQuantity: 'totalQuantity',
+  notes: 'notes',
+  locationId: 'locationId'
+};
+
+exports.Prisma.LocationScalarFieldEnum = {
+  id: 'id',
+  table: 'table',
+  floor: 'floor',
+  block: 'block'
+};
+
+exports.Prisma.OrderItemScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  type: 'type',
+  name: 'name',
+  quantity: 'quantity',
+  variant: 'variant',
+  flavor: 'flavor'
+};
+
+exports.Prisma.ItemCustomizationScalarFieldEnum = {
+  id: 'id',
+  itemId: 'itemId',
+  value: 'value'
+};
+
+exports.Prisma.ActionLogsScalarFieldEnum = {
+  id: 'id',
+  timestamp: 'timestamp',
+  userInput: 'userInput',
+  predictedAction: 'predictedAction',
+  actualAction: 'actualAction',
+  language: 'language'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -148,11 +191,19 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.ItemType = exports.$Enums.ItemType = {
+  drink: 'drink',
+  food: 'food'
+};
 
 exports.Prisma.ModelName = {
   Category: 'Category',
-  FoodItem: 'FoodItem'
+  FoodItem: 'FoodItem',
+  Order: 'Order',
+  Location: 'Location',
+  OrderItem: 'OrderItem',
+  ItemCustomization: 'ItemCustomization',
+  ActionLogs: 'ActionLogs'
 };
 
 /**

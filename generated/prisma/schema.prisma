@@ -29,3 +29,58 @@ model FoodItem {
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
 }
+
+//logs for data training
+model Order {
+  id              Int         @id @default(autoincrement())
+  timestamp       DateTime    @default(now())
+  userInput       String
+  predictedAction String
+  actualAction    String
+  totalQuantity   Int
+  notes           String?
+  location        Location    @relation(fields: [locationId], references: [id])
+  locationId      Int
+  items           OrderItem[]
+}
+
+model Location {
+  id     Int     @id @default(autoincrement())
+  table  Int
+  floor  Int
+  block  String
+  orders Order[]
+}
+
+model OrderItem {
+  id             Int                 @id @default(autoincrement())
+  order          Order               @relation(fields: [orderId], references: [id])
+  orderId        Int
+  type           ItemType
+  name           String
+  quantity       Int
+  variant        String? // for croissant
+  flavor         String? // for samosa
+  customizations ItemCustomization[]
+}
+
+model ItemCustomization {
+  id     Int       @id @default(autoincrement())
+  item   OrderItem @relation(fields: [itemId], references: [id])
+  itemId Int
+  value  String
+}
+
+enum ItemType {
+  drink
+  food
+}
+
+model ActionLogs {
+  id              Int      @id @default(autoincrement())
+  timestamp       DateTime @default(now())
+  userInput       String
+  predictedAction String
+  actualAction    String
+  language        String
+}
